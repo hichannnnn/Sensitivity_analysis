@@ -1,0 +1,124 @@
+node ERBB2 {
+  logic = ERBB2;
+}
+
+node EGFR {
+  logic = (ERBB2);
+}
+
+node SOS1 {
+  logic = NOT ((MAPK3 OR MAPK1));
+}
+
+node KRAS {
+  logic = (SOS1);
+}
+
+node MAPK3 {
+  logic = ((MAP2K2 OR (MAP2K1 OR SIGNOR_PF25)));
+}
+
+node AKT1 {
+  logic = (((SIGNOR_C156 OR CSNK2A1)) AND NOT (PTEN));
+}
+
+node MAPK1 {
+  logic = (MAP2K2);
+}
+
+node SIGNOR_PF24 {
+  logic = SIGNOR_PF24;
+}
+
+node PRKAA1 {
+  logic = NOT (AKT1);
+}
+
+node RAF1 {
+  logic = ((KRAS) AND NOT ((MAPK3 OR (AKT1 OR (MAPK1 OR (SIGNOR_PF24 OR PRKAA1))))));
+}
+
+node MAP2K2 {
+  logic = (RAF1);
+}
+
+node MAP2K1 {
+  logic = ((RAF1) AND NOT (MAPK1));
+}
+
+node SIGNOR_PF25 {
+  logic = SIGNOR_PF25;
+}
+
+node PIK3R1 {
+  logic = (EGFR);
+}
+
+node CSNK2A1 {
+  logic = (MAPK1);
+}
+
+node PTEN {
+  logic = NOT (CSNK2A1);
+}
+
+node SIGNOR_C156 {
+  logic = SIGNOR_C156;
+}
+
+node CTNNB1 {
+  logic = (EGFR);
+}
+
+node STAT3 {
+  logic = ((EGFR OR MAPK3));
+}
+
+node GLI1 {
+  logic = ((MAPK1) AND NOT (PTEN));
+}
+
+node GSK3B {
+  logic = NOT ((MAPK3 OR (AKT1 OR MAPK1)));
+}
+
+node CCND1 {
+  logic = (((CTNNB1 OR (STAT3 OR GLI1))) AND NOT (GSK3B));
+}
+
+node E2F1 {
+  logic = (MAPK3);
+}
+
+node CCNE1 {
+  logic = ((E2F1) AND NOT (GSK3B));
+}
+
+node CDK4 {
+  logic = (CCND1);
+}
+
+node RB1 {
+  logic = NOT (CDK4);
+}
+
+node SMAD3 {
+  logic = NOT (MAPK1);
+}
+
+node MYC {
+  logic = NOT ((GSK3B OR SMAD3));
+}
+
+node USP8 {
+  logic = (EGFR);
+}
+
+node PTPN7 {
+  logic = ((MAPK3 OR MAPK1));
+}
+
+node DUSP6 {
+  logic = NOT ((MAPK3 OR MAPK1));
+}
+

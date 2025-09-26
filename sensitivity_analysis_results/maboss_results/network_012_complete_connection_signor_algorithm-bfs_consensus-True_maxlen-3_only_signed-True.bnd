@@ -1,0 +1,164 @@
+node ERBB2 {
+  logic = ERBB2;
+}
+
+node SRC {
+  logic = ((PIK3CG OR GSK3B));
+}
+
+node AURKA {
+  logic = NOT (GSK3B);
+}
+
+node EGFR {
+  logic = ((ERBB2 OR (SRC OR AURKA)));
+}
+
+node SOS1 {
+  logic = ((GRB2) AND NOT ((MAPK1 OR MAPK3)));
+}
+
+node KRAS {
+  logic = ((SOS1 OR SRC));
+}
+
+node PAK1 {
+  logic = (NCK1);
+}
+
+node MAPK1 {
+  logic = ((SIGNOR_PF25) AND NOT (PTPN7));
+}
+
+node MAPK3 {
+  logic = ((SIGNOR_PF25 OR MAP2K1));
+}
+
+node SIGNOR_PF24 {
+  logic = SIGNOR_PF24;
+}
+
+node AKT1 {
+  logic = (((SIGNOR_C156 OR (CHEBI_16618 OR (CSNK2A1 OR SRC)))) AND NOT ((PHLPP1 OR PTEN)));
+}
+
+node RAF1 {
+  logic = (((PAK1 OR (KRAS OR SRC))) AND NOT ((MAPK1 OR (MAPK3 OR (SIGNOR_PF24 OR AKT1)))));
+}
+
+node SIGNOR_PF25 {
+  logic = SIGNOR_PF25;
+}
+
+node PTPN7 {
+  logic = (MAPK3);
+}
+
+node MAP2K1 {
+  logic = (((RAF1 OR BRAF)) AND NOT (MAPK1));
+}
+
+node PIK3R1 {
+  logic = (EGFR);
+}
+
+node LCK {
+  logic = NOT (CBL);
+}
+
+node CSNK2A1 {
+  logic = (MAPK1);
+}
+
+node PTEN {
+  logic = (((LCK OR SRC)) AND NOT (CSNK2A1));
+}
+
+node SIGNOR_C156 {
+  logic = SIGNOR_C156;
+}
+
+node CHEBI_16618 {
+  logic = ((PIK3CG OR SIGNOR_C156));
+}
+
+node PHLPP1 {
+  logic = NOT (GSK3B);
+}
+
+node CTNNB1 {
+  logic = (((EGFR OR (SRC OR (AURKA OR (SIGNOR_PF24 OR CSNK2A1))))) AND NOT (GSK3B));
+}
+
+node GLI1 {
+  logic = ((MAPK1) AND NOT (PTEN));
+}
+
+node GSK3B {
+  logic = NOT ((MAPK1 OR (MAPK3 OR (AKT1 OR SIGNOR_PF24))));
+}
+
+node CCND1 {
+  logic = (((CTNNB1 OR GLI1)) AND NOT (GSK3B));
+}
+
+node E2F1 {
+  logic = (MAPK3);
+}
+
+node CCNE1 {
+  logic = ((E2F1) AND NOT (GSK3B));
+}
+
+node CDK4 {
+  logic = ((CCND1) AND NOT (CDKN2A));
+}
+
+node SIGNOR_C18 {
+  logic = SIGNOR_C18;
+}
+
+node RB1 {
+  logic = NOT ((CDK4 OR SIGNOR_C18));
+}
+
+node PIM1 {
+  logic = (STAT5A);
+}
+
+node SMAD3 {
+  logic = NOT ((CDK4 OR MAPK1));
+}
+
+node MYC {
+  logic = ((PIM1) AND NOT ((GSK3B OR SMAD3)));
+}
+
+node PIK3CG {
+  logic = (KRAS);
+}
+
+node GRB2 {
+  logic = (EGFR);
+}
+
+node NCK1 {
+  logic = (EGFR);
+}
+
+node CBL {
+  logic = (EGFR);
+}
+
+node STAT5A {
+  logic = (EGFR);
+}
+
+node BRAF {
+  logic = NOT ((AKT1 OR (MAPK1 OR (MAPK3 OR SIGNOR_PF24))));
+}
+
+node CDKN2A {
+  logic = NOT (MYC);
+}
+

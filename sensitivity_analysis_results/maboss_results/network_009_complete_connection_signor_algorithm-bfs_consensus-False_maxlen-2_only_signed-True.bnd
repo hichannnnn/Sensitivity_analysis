@@ -1,0 +1,216 @@
+node ERBB2 {
+  logic = (((SRC OR (PRKACA OR (NOTCH1 OR JAK2)))) AND NOT (PTPN11));
+}
+
+node SRC {
+  logic = (((PRKACA OR GSK3B)) AND NOT (PTEN));
+}
+
+node ABL1 {
+  logic = (((ERBB2 OR (SRC OR ATM))) AND NOT (RB1));
+}
+
+node MAPK1 {
+  logic = (((SHC1 OR (SIGNOR_PF25 OR AKT1))) AND NOT ((PTPN7 OR (DUSP1 OR PEA15))));
+}
+
+node MAPK3 {
+  logic = (((SHC1 OR SIGNOR_PF25)) AND NOT ((DUSP6 OR (DUSP1 OR (PEA15 OR CDC25A)))));
+}
+
+node ITCH {
+  logic = ((AKT1 OR ATM));
+}
+
+node CDK1 {
+  logic = ((E2F1) AND NOT (ERBB2));
+}
+
+node EGFR {
+  logic = (((ERBB2 OR (SRC OR ABL1))) AND NOT ((MAPK1 OR (MAPK3 OR (ITCH OR CDK1)))));
+}
+
+node PRKACA {
+  logic = ((AKT1 OR SIGNOR_PF24));
+}
+
+node NOTCH1 {
+  logic = (((CCND1 OR (CTNNB1 OR GSK3B))) AND NOT ((ITCH OR SIRT1)));
+}
+
+node JAK2 {
+  logic = (((EGFR OR (PTPN11 OR ABL1))) AND NOT ((MAPK1 OR (MAPK3 OR DAB2IP))));
+}
+
+node PTPN11 {
+  logic = (((EGFR OR ABL1)) AND NOT (PRKACA));
+}
+
+node SOS1 {
+  logic = ((SHC1) AND NOT ((MAPK1 OR MAPK3)));
+}
+
+node RASGEF1B {
+  logic = (E2F1);
+}
+
+node DAB2IP {
+  logic = NOT (AKT1);
+}
+
+node KRAS {
+  logic = (((PTPN11 OR (SOS1 OR (SRC OR RASGEF1B)))) AND NOT (DAB2IP));
+}
+
+node SIGNOR_PF24 {
+  logic = SIGNOR_PF24;
+}
+
+node AKT1 {
+  logic = (((SIGNOR_C156 OR (PIK3CA OR (SIRT1 OR SRC)))) AND NOT ((POU5F1 OR (PTEN OR ATM))));
+}
+
+node CDC25A {
+  logic = (((E2F1 OR (MYC OR CDK1))) AND NOT (GSK3B));
+}
+
+node RAF1 {
+  logic = (((JAK2 OR (KRAS OR SRC))) AND NOT ((MAPK1 OR (MAPK3 OR (SIGNOR_PF24 OR (AKT1 OR (CDC25A OR PRKACA)))))));
+}
+
+node SHC1 {
+  logic = ((EGFR OR (ERBB2 OR (SRC OR PTK2))));
+}
+
+node SIGNOR_PF25 {
+  logic = SIGNOR_PF25;
+}
+
+node PTPN7 {
+  logic = ((MAPK3) AND NOT (PRKACA));
+}
+
+node DUSP1 {
+  logic = (PTEN);
+}
+
+node PEA15 {
+  logic = ((AKT1 OR SIGNOR_PF24));
+}
+
+node DUSP6 {
+  logic = NOT (MAPK1);
+}
+
+node PIK3CA {
+  logic = ((KRAS) AND NOT ((PTEN OR DAB2IP)));
+}
+
+node PTK2 {
+  logic = (((AKT1 OR (EGFR OR (ERBB2 OR SRC)))) AND NOT ((PTEN OR PTPN11)));
+}
+
+node PIK3R1 {
+  logic = (((EGFR OR (PIK3CA OR PTK2))) AND NOT (DAB2IP));
+}
+
+node PPARG {
+  logic = (((E2F1 OR (ABL1 OR (PRKACA OR (NOTCH1 OR SIGNOR_PF25))))) AND NOT ((EGFR OR (MAPK1 OR (MAPK3 OR SIRT1)))));
+}
+
+node XIAP {
+  logic = ((RAF1 OR (AKT1 OR (SIGNOR_PF24 OR GSK3B))));
+}
+
+node KDM5A {
+  logic = (AKT1);
+}
+
+node GSK3B {
+  logic = (((DAB2IP OR (SIGNOR_PF25 OR PTK2))) AND NOT ((MAPK1 OR (MAPK3 OR (AKT1 OR (PRKACA OR SIGNOR_PF24))))));
+}
+
+node PTEN {
+  logic = NOT ((PPARG OR (XIAP OR (KDM5A OR GSK3B))));
+}
+
+node SIGNOR_C156 {
+  logic = SIGNOR_C156;
+}
+
+node SIRT1 {
+  logic = (((MYC OR (CDK1 OR CDK2))) AND NOT (HIC1));
+}
+
+node POU5F1 {
+  logic = (((CTNNB1 OR SIGNOR_PF24)) AND NOT ((MAPK1 OR MAPK3)));
+}
+
+node ATM {
+  logic = (EGFR);
+}
+
+node CTNNB1 {
+  logic = (((EGFR OR (AKT1 OR (SRC OR (PRKACA OR (SIGNOR_PF24 OR SIRT1)))))) AND NOT ((ERBB2 OR (PPARG OR (DAB2IP OR GSK3B)))));
+}
+
+node GLI1 {
+  logic = (((MAPK1 OR HDAC1)) AND NOT ((PTEN OR (ITCH OR PRKACA))));
+}
+
+node SRPK2 {
+  logic = ((AKT1 OR SIGNOR_PF24));
+}
+
+node HDAC1 {
+  logic = (((E2F1 OR HDAC3)) AND NOT (PPARG));
+}
+
+node MYC {
+  logic = (((EGFR OR (CTNNB1 OR (NOTCH1 OR (CDK2 OR (ABL1 OR (MAPK1 OR (MAPK3 OR JAK2)))))))) AND NOT ((HIC1 OR GSK3B)));
+}
+
+node RASSF1 {
+  logic = (((KRAS OR ATM)) AND NOT ((SIGNOR_C18 OR CDK4)));
+}
+
+node CCND1 {
+  logic = (((CTNNB1 OR (GLI1 OR (SRPK2 OR (HDAC1 OR MYC))))) AND NOT ((RASSF1 OR GSK3B)));
+}
+
+node E2F2 {
+  logic = NOT (RB1);
+}
+
+node E2F1 {
+  logic = (((ATM OR (MAPK3 OR (PRKACA OR HDAC3)))) AND NOT (RB1));
+}
+
+node CCNE1 {
+  logic = (((MYC OR (E2F2 OR E2F1))) AND NOT (GSK3B));
+}
+
+node SIGNOR_C18 {
+  logic = SIGNOR_C18;
+}
+
+node CDK2 {
+  logic = ((CCNE1 OR (MAPK1 OR (AKT1 OR (SIGNOR_PF24 OR CDC25A)))));
+}
+
+node CDK4 {
+  logic = ((MYC OR (CCND1 OR CDC25A)));
+}
+
+node RB1 {
+  logic = NOT ((CDK1 OR (RAF1 OR (SIGNOR_C18 OR (CDK2 OR CDK4)))));
+}
+
+node HDAC3 {
+  logic = ((CCND1 OR (RB1 OR (SRC OR GSK3B))));
+}
+
+node HIC1 {
+  logic = (E2F1);
+}
+

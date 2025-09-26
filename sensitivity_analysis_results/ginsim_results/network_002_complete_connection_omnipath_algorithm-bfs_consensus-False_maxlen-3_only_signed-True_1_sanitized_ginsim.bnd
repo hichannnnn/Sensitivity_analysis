@@ -1,0 +1,276 @@
+Node EGFR {
+  logic = (!ERBB2 & !PTEN & !RIN1 & !FASLG & !VEGFA & !TP53 & !ABL1 & PPP2CA & !CDK1 & !NEDD4L & !CDC42) | (!ERBB2 & !PTEN & !RIN1 & !FASLG & !VEGFA & !TP53 & ABL1 & !CDK1 & !NEDD4L & !CDC42) | (!ERBB2 & !PTEN & !RIN1 & !FASLG & !VEGFA & TP53 & !CDK1 & !NEDD4L & !CDC42) | (!ERBB2 & !PTEN & !RIN1 & !FASLG & VEGFA & !CDK1 & !NEDD4L & !CDC42) | (!ERBB2 & !PTEN & !RIN1 & FASLG & !CDK1 & !NEDD4L & !CDC42) | (!ERBB2 & !PTEN & RIN1 & !CDK1 & !NEDD4L & !CDC42) | (ERBB2 & !PTEN & !CDK1 & !NEDD4L & !CDC42);
+  rate_up = @logic ? $u_EGFR : 0;
+  rate_down = @logic ? 0 : $d_EGFR;
+}
+
+Node ERBB2 {
+  logic = (!MYC & VEGFA);
+  rate_up = @logic ? $u_ERBB2 : 0;
+  rate_down = @logic ? 0 : $d_ERBB2;
+}
+
+Node KRAS {
+  logic = (!EGFR & !ERBB2 & !RIN1 & !IL2 & MET & !GAB2) | (!EGFR & !ERBB2 & !RIN1 & IL2 & !GAB2) | (!EGFR & !ERBB2 & RIN1 & !GAB2) | (!EGFR & ERBB2 & !GAB2) | (EGFR & !GAB2);
+  rate_up = @logic ? $u_KRAS : 0;
+  rate_down = @logic ? 0 : $d_KRAS;
+}
+
+Node RAF1 {
+  logic = (!KRAS & !NRAS & !PPP2CA & !RAC1 & !CDC25A & HSP90AA1) | (!KRAS & !NRAS & !PPP2CA & RAC1 & !CDC25A) | (!KRAS & !NRAS & PPP2CA & !CDC25A) | (!KRAS & NRAS & !CDC25A) | (KRAS & !CDC25A);
+  rate_up = @logic ? $u_RAF1 : 0;
+  rate_down = @logic ? 0 : $d_RAF1;
+}
+
+Node MAPK1 {
+  logic = (!EGFR & !RAF1 & !PIK3R1 & !AKT1 & !PTK2 & !VEGFA & !PIK3CA & !RHOA & !RAC1 & !IL2 & CDC42) | (!EGFR & !RAF1 & !PIK3R1 & !AKT1 & !PTK2 & !VEGFA & !PIK3CA & !RHOA & !RAC1 & IL2) | (!EGFR & !RAF1 & !PIK3R1 & !AKT1 & !PTK2 & !VEGFA & !PIK3CA & !RHOA & RAC1) | (!EGFR & !RAF1 & !PIK3R1 & !AKT1 & !PTK2 & !VEGFA & !PIK3CA & RHOA) | (!EGFR & !RAF1 & !PIK3R1 & !AKT1 & !PTK2 & VEGFA & !PIK3CA) | (!EGFR & !RAF1 & !PIK3R1 & !AKT1 & PTK2 & !PIK3CA) | (!EGFR & !RAF1 & !PIK3R1 & AKT1 & !PIK3CA) | (!EGFR & RAF1 & !PIK3R1 & !PIK3CA) | (EGFR & !PIK3R1 & !PIK3CA);
+  rate_up = @logic ? $u_MAPK1 : 0;
+  rate_down = @logic ? 0 : $d_MAPK1;
+}
+
+Node MAPK3 {
+  logic = (!EGFR & !RAF1 & !MAPK1 & !PIK3R1 & !AKT1 & !VEGFA & !PPP2CA & !CDK1 & !PIK3CA & !RAC1 & !IL2 & !STAT1 & !CDC25A & BRCA1) | (!EGFR & !RAF1 & !MAPK1 & !PIK3R1 & !AKT1 & !VEGFA & !PPP2CA & !CDK1 & !PIK3CA & !RAC1 & !IL2 & STAT1 & !CDC25A) | (!EGFR & !RAF1 & !MAPK1 & !PIK3R1 & !AKT1 & !VEGFA & !PPP2CA & !CDK1 & !PIK3CA & !RAC1 & IL2 & !CDC25A) | (!EGFR & !RAF1 & !MAPK1 & !PIK3R1 & !AKT1 & !VEGFA & !PPP2CA & !CDK1 & !PIK3CA & RAC1 & !CDC25A) | (!EGFR & !RAF1 & !MAPK1 & !PIK3R1 & !AKT1 & !VEGFA & !PPP2CA & CDK1 & !PIK3CA & !CDC25A) | (!EGFR & !RAF1 & !MAPK1 & !PIK3R1 & !AKT1 & VEGFA & !PPP2CA & !PIK3CA & !CDC25A) | (!EGFR & !RAF1 & !MAPK1 & !PIK3R1 & AKT1 & !PPP2CA & !PIK3CA & !CDC25A) | (!EGFR & !RAF1 & MAPK1 & !PIK3R1 & !PPP2CA & !PIK3CA & !CDC25A) | (!EGFR & RAF1 & !PIK3R1 & !PPP2CA & !PIK3CA & !CDC25A) | (EGFR & !PIK3R1 & !PPP2CA & !PIK3CA & !CDC25A);
+  rate_up = @logic ? $u_MAPK3 : 0;
+  rate_down = @logic ? 0 : $d_MAPK3;
+}
+
+Node PIK3R1 {
+  logic = (!EGFR & !ERBB2 & !PTEN & !LAMB4 & !VEGFA & !MET & !ESR1 & GAB2) | (!EGFR & !ERBB2 & !PTEN & !LAMB4 & !VEGFA & !MET & ESR1) | (!EGFR & !ERBB2 & !PTEN & !LAMB4 & !VEGFA & MET) | (!EGFR & !ERBB2 & !PTEN & !LAMB4 & VEGFA) | (!EGFR & !ERBB2 & !PTEN & LAMB4) | (!EGFR & ERBB2 & !PTEN) | (EGFR & !PTEN);
+  rate_up = @logic ? $u_PIK3R1 : 0;
+  rate_down = @logic ? 0 : $d_PIK3R1;
+}
+
+Node PTEN {
+  logic = (!PTK2 & !TP53 & !HSP90AA1 & CDC42 & !RELA) | (!PTK2 & !TP53 & HSP90AA1 & !RELA) | (!PTK2 & TP53 & !RELA);
+  rate_up = @logic ? $u_PTEN : 0;
+  rate_down = @logic ? 0 : $d_PTEN;
+}
+
+Node AKT1 {
+  logic = (!ERBB2 & !PIK3R1 & !PTEN & !FASLG & !LAMB4 & !COMPLEX_P27986_P42336 & !RHOA & !RAC1 & !IL2 & !ESR1 & !BRCA1 & GAB2) | (!ERBB2 & !PIK3R1 & !PTEN & !FASLG & !LAMB4 & !COMPLEX_P27986_P42336 & !RHOA & !RAC1 & !IL2 & ESR1 & !BRCA1) | (!ERBB2 & !PIK3R1 & !PTEN & !FASLG & !LAMB4 & !COMPLEX_P27986_P42336 & !RHOA & !RAC1 & IL2 & !BRCA1) | (!ERBB2 & !PIK3R1 & !PTEN & !FASLG & !LAMB4 & !COMPLEX_P27986_P42336 & !RHOA & RAC1 & !BRCA1) | (!ERBB2 & !PIK3R1 & !PTEN & !FASLG & !LAMB4 & COMPLEX_P27986_P42336 & !RHOA & !BRCA1) | (!ERBB2 & !PIK3R1 & !PTEN & !FASLG & LAMB4 & !RHOA & !BRCA1) | (!ERBB2 & !PIK3R1 & !PTEN & FASLG & !RHOA & !BRCA1) | (!ERBB2 & PIK3R1 & !PTEN & !RHOA & !BRCA1);
+  rate_up = @logic ? $u_AKT1 : 0;
+  rate_down = @logic ? 0 : $d_AKT1;
+}
+
+Node CCND1 {
+  logic = (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & !STAT5A & !NFKB1 & !PIK3CA & !RAC1 & !CDC25A & !RELA & !TERT & BRCA1) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & !STAT5A & !NFKB1 & !PIK3CA & !RAC1 & !CDC25A & !RELA & TERT) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & !STAT5A & !NFKB1 & !PIK3CA & !RAC1 & !CDC25A & RELA) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & !STAT5A & !NFKB1 & !PIK3CA & !RAC1 & CDC25A) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & !STAT5A & !NFKB1 & !PIK3CA & RAC1) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & !STAT5A & !NFKB1 & PIK3CA) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & !STAT5A & NFKB1) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !MYC & STAT5A) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & MYC) | (!EGFR & !MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & E2F1) | (!EGFR & !MAPK1 & !MAPK3 & PIK3R1 & !RB1) | (!EGFR & !MAPK1 & MAPK3 & !RB1) | (!EGFR & MAPK1 & !RB1) | (EGFR & !RB1);
+  rate_up = @logic ? $u_CCND1 : 0;
+  rate_down = @logic ? 0 : $d_CCND1;
+}
+
+Node CCNE1 {
+  logic = (!RB1 & !E2F1 & !MYC & !STAT5A & RHOA) | (!RB1 & !E2F1 & !MYC & STAT5A) | (!RB1 & !E2F1 & MYC) | (!RB1 & E2F1) | (RB1);
+  rate_up = @logic ? $u_CCNE1 : 0;
+  rate_down = @logic ? 0 : $d_CCNE1;
+}
+
+Node RB1 {
+  logic = (!AKT1 & !VEGFA & !ABL1 & PPP2CA) | (AKT1 & !VEGFA & !ABL1);
+  rate_up = @logic ? $u_RB1 : 0;
+  rate_down = @logic ? 0 : $d_RB1;
+}
+
+Node E2F1 {
+  logic = (!EGFR & !MAPK1 & !MAPK3 & !PTEN & !RB1 & VEGFA) | (!EGFR & !MAPK1 & !MAPK3 & PTEN & !RB1) | (!EGFR & !MAPK1 & MAPK3 & !RB1) | (!EGFR & MAPK1 & !RB1) | (EGFR & !RB1);
+  rate_up = @logic ? $u_E2F1 : 0;
+  rate_down = @logic ? 0 : $d_E2F1;
+}
+
+Node MYC {
+  logic = (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !ABL1 & !PPP2CA & !NFKB1 & !PIK3CA & !RAC1 & !IL2 & !RELA & !ESR1 & !RBL1 & CDK2) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !ABL1 & !PPP2CA & !NFKB1 & !PIK3CA & !RAC1 & !IL2 & !RELA & ESR1 & !RBL1) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !ABL1 & !PPP2CA & !NFKB1 & !PIK3CA & !RAC1 & IL2 & !RELA & !RBL1) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !ABL1 & !PPP2CA & !NFKB1 & !PIK3CA & RAC1 & !RELA & !RBL1) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !ABL1 & !PPP2CA & !NFKB1 & PIK3CA & !RELA & !RBL1) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !ABL1 & !PPP2CA & NFKB1 & !RELA & !RBL1) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & !ABL1 & PPP2CA & !RELA & !RBL1) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & !E2F1 & ABL1 & !RELA & !RBL1) | (!MAPK1 & !MAPK3 & !PIK3R1 & !RB1 & E2F1 & !RELA & !RBL1) | (!MAPK1 & !MAPK3 & PIK3R1 & !RB1 & !RELA & !RBL1) | (!MAPK1 & MAPK3 & !RB1 & !RELA & !RBL1) | (MAPK1 & !RB1 & !RELA & !RBL1);
+  rate_up = @logic ? $u_MYC : 0;
+  rate_down = @logic ? 0 : $d_MYC;
+}
+
+Node RIN1 {
+  logic = (RIN1);
+  rate_up = @logic ? $u_RIN1 : 0;
+  rate_down = @logic ? 0 : $d_RIN1;
+}
+
+Node NRAS {
+  logic = (!EGFR & !ERBB2 & !RIN1 & !IL2 & MET & !GAB2) | (!EGFR & !ERBB2 & !RIN1 & IL2 & !GAB2) | (!EGFR & ERBB2 & !RIN1 & !GAB2) | (EGFR & !RIN1 & !GAB2);
+  rate_up = @logic ? $u_NRAS : 0;
+  rate_down = @logic ? 0 : $d_NRAS;
+}
+
+Node FASLG {
+  logic = (!PIK3R1 & !TP53 & !STAT5A & STAT1) | (!PIK3R1 & !TP53 & STAT5A) | (!PIK3R1 & TP53) | (PIK3R1);
+  rate_up = @logic ? $u_FASLG : 0;
+  rate_down = @logic ? 0 : $d_FASLG;
+}
+
+Node PTK2 {
+  logic = (!EGFR & !ERBB2 & !PIK3R1 & !AKT1 & !VEGFA & !TP53 & !RHOA & !HSP90AA1 & MET) | (!EGFR & !ERBB2 & !PIK3R1 & !AKT1 & !VEGFA & !TP53 & !RHOA & HSP90AA1) | (!EGFR & !ERBB2 & !PIK3R1 & !AKT1 & !VEGFA & !TP53 & RHOA) | (!EGFR & !ERBB2 & !PIK3R1 & !AKT1 & VEGFA & !TP53) | (!EGFR & !ERBB2 & !PIK3R1 & AKT1 & !TP53) | (!EGFR & !ERBB2 & PIK3R1 & !TP53) | (!EGFR & ERBB2 & !TP53) | (EGFR & !TP53);
+  rate_up = @logic ? $u_PTK2 : 0;
+  rate_down = @logic ? 0 : $d_PTK2;
+}
+
+Node USP8 {
+  logic = (!EGFR & AKT1) | (EGFR);
+  rate_up = @logic ? $u_USP8 : 0;
+  rate_down = @logic ? 0 : $d_USP8;
+}
+
+Node LAMB4 {
+  logic = (EGFR);
+  rate_up = @logic ? $u_LAMB4 : 0;
+  rate_down = @logic ? 0 : $d_LAMB4;
+}
+
+Node VEGFA {
+  logic = (!CCND1 & !MYC & !NFKB1 & !STAT1 & !RELA & ESR1) | (!CCND1 & !MYC & !NFKB1 & !STAT1 & RELA) | (!CCND1 & !MYC & !NFKB1 & STAT1) | (!CCND1 & !MYC & NFKB1) | (!CCND1 & MYC);
+  rate_up = @logic ? $u_VEGFA : 0;
+  rate_down = @logic ? 0 : $d_VEGFA;
+}
+
+Node TP53 {
+  logic = (!MAPK1 & !MAPK3 & !CCNE1 & !RB1 & !E2F1 & !MYC & !NFKB1 & !HSP90AA1 & CDK2) | (!MAPK1 & !MAPK3 & !CCNE1 & !RB1 & !E2F1 & !MYC & NFKB1 & !HSP90AA1) | (!MAPK1 & !MAPK3 & !CCNE1 & !RB1 & !E2F1 & MYC & !HSP90AA1) | (!MAPK1 & !MAPK3 & !CCNE1 & !RB1 & E2F1 & !HSP90AA1) | (!MAPK1 & !MAPK3 & !CCNE1 & RB1 & !HSP90AA1) | (!MAPK1 & !MAPK3 & CCNE1 & !HSP90AA1) | (!MAPK1 & MAPK3 & !HSP90AA1) | (MAPK1 & !HSP90AA1);
+  rate_up = @logic ? $u_TP53 : 0;
+  rate_down = @logic ? 0 : $d_TP53;
+}
+
+Node STAT5A {
+  logic = (!EGFR & !MAPK1 & !MAPK3 & !PTEN & !ABL1 & IL2) | (!EGFR & !MAPK1 & !MAPK3 & !PTEN & ABL1) | (!EGFR & !MAPK1 & MAPK3 & !PTEN) | (!EGFR & MAPK1 & !PTEN) | (EGFR & !PTEN);
+  rate_up = @logic ? $u_STAT5A : 0;
+  rate_down = @logic ? 0 : $d_STAT5A;
+}
+
+Node ABL1 {
+  logic = (!ERBB2 & !RIN1 & !CDK1 & !BRCA1 & CDK2) | (!ERBB2 & !RIN1 & CDK1 & !BRCA1) | (!ERBB2 & RIN1 & !BRCA1) | (ERBB2 & !BRCA1);
+  rate_up = @logic ? $u_ABL1 : 0;
+  rate_down = @logic ? 0 : $d_ABL1;
+}
+
+Node PPP2CA {
+  logic = (!MAPK1 & !AKT1);
+  rate_up = @logic ? $u_PPP2CA : 0;
+  rate_down = @logic ? 0 : $d_PPP2CA;
+}
+
+Node CDK1 {
+  logic = (!ERBB2 & !MAPK1 & !E2F1 & TP53 & !RBL1) | (!ERBB2 & !MAPK1 & E2F1 & !RBL1);
+  rate_up = @logic ? $u_CDK1 : 0;
+  rate_down = @logic ? 0 : $d_CDK1;
+}
+
+Node NEDD4L {
+  logic = (!MYC);
+  rate_up = @logic ? $u_NEDD4L : 0;
+  rate_down = @logic ? 0 : $d_NEDD4L;
+}
+
+Node NFKB1 {
+  logic = (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !PIK3R1 & !AKT1 & !E2F1 & !FASLG & !PIK3CA & !RAC1 & BRCA1) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !PIK3R1 & !AKT1 & !E2F1 & !FASLG & !PIK3CA & RAC1) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !PIK3R1 & !AKT1 & !E2F1 & !FASLG & PIK3CA) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !PIK3R1 & !AKT1 & !E2F1 & FASLG) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !PIK3R1 & AKT1 & !E2F1) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & PIK3R1 & !E2F1) | (!EGFR & !ERBB2 & !MAPK1 & MAPK3 & !E2F1) | (!EGFR & !ERBB2 & MAPK1 & !E2F1) | (!EGFR & ERBB2 & !E2F1) | (EGFR & !E2F1);
+  rate_up = @logic ? $u_NFKB1 : 0;
+  rate_down = @logic ? 0 : $d_NFKB1;
+}
+
+Node PIK3CA {
+  logic = (!EGFR & !ERBB2 & !KRAS & !PIK3R1 & !PTEN & !NRAS & !PTK2 & !LAMB4 & !VEGFA & !MET & GAB2) | (!EGFR & !ERBB2 & !KRAS & !PIK3R1 & !PTEN & !NRAS & !PTK2 & !LAMB4 & !VEGFA & MET) | (!EGFR & !ERBB2 & !KRAS & !PIK3R1 & !PTEN & !NRAS & !PTK2 & !LAMB4 & VEGFA) | (!EGFR & !ERBB2 & !KRAS & !PIK3R1 & !PTEN & !NRAS & !PTK2 & LAMB4) | (!EGFR & !ERBB2 & !KRAS & !PIK3R1 & !PTEN & !NRAS & PTK2) | (!EGFR & !ERBB2 & !KRAS & !PIK3R1 & !PTEN & NRAS) | (!EGFR & !ERBB2 & !KRAS & PIK3R1 & !PTEN) | (!EGFR & !ERBB2 & KRAS & !PTEN) | (!EGFR & ERBB2 & !PTEN) | (EGFR & !PTEN);
+  rate_up = @logic ? $u_PIK3CA : 0;
+  rate_down = @logic ? 0 : $d_PIK3CA;
+}
+
+Node COMPLEX_P27986_P42336 {
+  logic = (!EGFR & !KRAS & !NRAS & !PTK2 & !ESR1 & GAB2) | (!EGFR & !KRAS & !NRAS & !PTK2 & ESR1) | (!EGFR & !KRAS & !NRAS & PTK2) | (!EGFR & !KRAS & NRAS) | (!EGFR & KRAS) | (EGFR);
+  rate_up = @logic ? $u_COMPLEX_P27986_P42336 : 0;
+  rate_down = @logic ? 0 : $d_COMPLEX_P27986_P42336;
+}
+
+Node RHOA {
+  logic = (!EGFR & !KRAS & !MAPK3 & !PIK3R1 & !NRAS & !LAMB4 & PIK3CA) | (!EGFR & !KRAS & !MAPK3 & !PIK3R1 & !NRAS & LAMB4) | (!EGFR & !KRAS & !MAPK3 & !PIK3R1 & NRAS) | (!EGFR & !KRAS & !MAPK3 & PIK3R1) | (!EGFR & !KRAS & MAPK3) | (!EGFR & KRAS) | (EGFR);
+  rate_up = @logic ? $u_RHOA : 0;
+  rate_down = @logic ? 0 : $d_RHOA;
+}
+
+Node RAC1 {
+  logic = (!EGFR & !KRAS & !PIK3R1 & !PTEN & !NRAS & !PTK2 & !VEGFA & !TP53 & !ABL1 & PIK3CA & !RHOA) | (!EGFR & !KRAS & !PIK3R1 & !PTEN & !NRAS & !PTK2 & !VEGFA & !TP53 & ABL1 & !RHOA) | (!EGFR & !KRAS & !PIK3R1 & !PTEN & !NRAS & !PTK2 & VEGFA & !TP53 & !RHOA) | (!EGFR & !KRAS & !PIK3R1 & !PTEN & !NRAS & PTK2 & !TP53 & !RHOA) | (!EGFR & !KRAS & !PIK3R1 & !PTEN & NRAS & !TP53 & !RHOA) | (!EGFR & !KRAS & !PIK3R1 & PTEN & !TP53 & !RHOA) | (!EGFR & !KRAS & PIK3R1 & !TP53 & !RHOA) | (!EGFR & KRAS & !TP53 & !RHOA) | (EGFR & !TP53 & !RHOA);
+  rate_up = @logic ? $u_RAC1 : 0;
+  rate_down = @logic ? 0 : $d_RAC1;
+}
+
+Node XIAP {
+  logic = (!RAF1 & !AKT1 & !TP53 & !NFKB1 & RELA) | (!RAF1 & !AKT1 & !TP53 & NFKB1) | (!RAF1 & !AKT1 & TP53) | (!RAF1 & AKT1) | (RAF1);
+  rate_up = @logic ? $u_XIAP : 0;
+  rate_down = @logic ? 0 : $d_XIAP;
+}
+
+Node IL2 {
+  logic = (!RAF1 & NFKB1 & !RHOA) | (RAF1 & !RHOA);
+  rate_up = @logic ? $u_IL2 : 0;
+  rate_down = @logic ? 0 : $d_IL2;
+}
+
+Node STAT1 {
+  logic = (!EGFR & !MAPK1 & !CCND1 & !PTK2 & !ABL1 & !IL2 & GAB2) | (!EGFR & !MAPK1 & !CCND1 & !PTK2 & !ABL1 & IL2) | (!EGFR & !MAPK1 & !CCND1 & !PTK2 & ABL1) | (!EGFR & !MAPK1 & !CCND1 & PTK2) | (!EGFR & MAPK1 & !CCND1) | (EGFR & !CCND1);
+  rate_up = @logic ? $u_STAT1 : 0;
+  rate_down = @logic ? 0 : $d_STAT1;
+}
+
+Node CDC25A {
+  logic = (!CCNE1 & !E2F1 & !MYC & CDK1 & !RBL1) | (!CCNE1 & !E2F1 & MYC & !RBL1) | (!CCNE1 & E2F1 & !RBL1) | (CCNE1 & !RBL1);
+  rate_up = @logic ? $u_CDC25A : 0;
+  rate_down = @logic ? 0 : $d_CDC25A;
+}
+
+Node HSP90AA1 {
+  logic = (!AKT1 & !MYC & IL2) | (!AKT1 & MYC) | (AKT1);
+  rate_up = @logic ? $u_HSP90AA1 : 0;
+  rate_down = @logic ? 0 : $d_HSP90AA1;
+}
+
+Node MET {
+  logic = (!MAPK1 & !MAPK3 & !RB1 & !USP8 & !VEGFA & !TP53 & ABL1 & !NEDD4L) | (!MAPK1 & !MAPK3 & !RB1 & !USP8 & !VEGFA & TP53 & !NEDD4L) | (!MAPK1 & !MAPK3 & !RB1 & !USP8 & VEGFA & !NEDD4L);
+  rate_up = @logic ? $u_MET : 0;
+  rate_down = @logic ? 0 : $d_MET;
+}
+
+Node CDC42 {
+  logic = (!PIK3R1 & !PTK2 & !VEGFA & !PIK3CA & !XIAP & MET) | (!PIK3R1 & !PTK2 & !VEGFA & PIK3CA & !XIAP) | (!PIK3R1 & !PTK2 & VEGFA & !XIAP) | (!PIK3R1 & PTK2 & !XIAP) | (PIK3R1 & !XIAP);
+  rate_up = @logic ? $u_CDC42 : 0;
+  rate_down = @logic ? 0 : $d_CDC42;
+}
+
+Node RELA {
+  logic = (!RAF1 & !MAPK1 & !MAPK3 & !PIK3R1 & !E2F1 & !PPP2CA & !NFKB1 & !PIK3CA & RAC1 & !STAT1) | (!RAF1 & !MAPK1 & !MAPK3 & !PIK3R1 & !E2F1 & !PPP2CA & !NFKB1 & PIK3CA & !STAT1) | (!RAF1 & !MAPK1 & !MAPK3 & !PIK3R1 & !E2F1 & !PPP2CA & NFKB1 & !STAT1) | (!RAF1 & !MAPK1 & !MAPK3 & !PIK3R1 & E2F1 & !PPP2CA & !STAT1) | (!RAF1 & !MAPK1 & !MAPK3 & PIK3R1 & !PPP2CA & !STAT1) | (!RAF1 & !MAPK1 & MAPK3 & !PPP2CA & !STAT1) | (!RAF1 & MAPK1 & !PPP2CA & !STAT1) | (RAF1 & !PPP2CA & !STAT1);
+  rate_up = @logic ? $u_RELA : 0;
+  rate_down = @logic ? 0 : $d_RELA;
+}
+
+Node TERT {
+  logic = (!EGFR & !KRAS & !MAPK1 & !MAPK3 & !AKT1 & !TP53 & !ABL1 & !CDK1 & !IL2 & ESR1) | (!EGFR & !KRAS & !MAPK1 & !MAPK3 & !AKT1 & !TP53 & !ABL1 & !CDK1 & IL2) | (!EGFR & !KRAS & !MAPK1 & !MAPK3 & !AKT1 & !TP53 & !ABL1 & CDK1) | (!EGFR & !KRAS & !MAPK1 & !MAPK3 & AKT1 & !TP53 & !ABL1) | (!EGFR & !KRAS & !MAPK1 & MAPK3 & !TP53 & !ABL1) | (!EGFR & !KRAS & MAPK1 & !TP53 & !ABL1) | (!EGFR & KRAS & !TP53 & !ABL1) | (EGFR & !TP53 & !ABL1);
+  rate_up = @logic ? $u_TERT : 0;
+  rate_down = @logic ? 0 : $d_TERT;
+}
+
+Node ESR1 {
+  logic = (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !CCND1 & !TP53 & !ABL1 & !BRCA1 & CDK2) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !CCND1 & !TP53 & ABL1 & !BRCA1) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & !CCND1 & TP53 & !BRCA1) | (!EGFR & !ERBB2 & !MAPK1 & !MAPK3 & CCND1 & !BRCA1) | (!EGFR & !ERBB2 & !MAPK1 & MAPK3 & !BRCA1) | (!EGFR & !ERBB2 & MAPK1 & !BRCA1) | (!EGFR & ERBB2 & !BRCA1) | (EGFR & !BRCA1);
+  rate_up = @logic ? $u_ESR1 : 0;
+  rate_down = @logic ? 0 : $d_ESR1;
+}
+
+Node BRCA1 {
+  logic = (!CCNE1 & !E2F1 & !CDK1 & !RBL1 & CDK2) | (!CCNE1 & !E2F1 & CDK1 & !RBL1) | (!CCNE1 & E2F1 & !RBL1) | (CCNE1 & !RBL1);
+  rate_up = @logic ? $u_BRCA1 : 0;
+  rate_down = @logic ? 0 : $d_BRCA1;
+}
+
+Node GAB2 {
+  logic = (E2F1 & !RHOA);
+  rate_up = @logic ? $u_GAB2 : 0;
+  rate_down = @logic ? 0 : $d_GAB2;
+}
+
+Node RBL1 {
+  logic = (!CCND1 & !RB1 & !E2F1 & PPP2CA) | (!CCND1 & !RB1 & E2F1);
+  rate_up = @logic ? $u_RBL1 : 0;
+  rate_down = @logic ? 0 : $d_RBL1;
+}
+
+Node CDK2 {
+  logic = (!MAPK1 & !AKT1 & !CCNE1 & !RHOA & CDC25A) | (!MAPK1 & !AKT1 & !CCNE1 & RHOA) | (!MAPK1 & !AKT1 & CCNE1) | (!MAPK1 & AKT1) | (MAPK1);
+  rate_up = @logic ? $u_CDK2 : 0;
+  rate_down = @logic ? 0 : $d_CDK2;
+}
+

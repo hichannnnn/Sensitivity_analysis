@@ -1,0 +1,366 @@
+Node EGFR {
+  logic = (!ERBB2 & !SRC & AURKA & !PTPN1) | (!ERBB2 & SRC & !PTPN1) | (ERBB2 & !PTPN1);
+  rate_up = @logic ? $u_EGFR : 0;
+  rate_down = @logic ? 0 : $d_EGFR;
+}
+
+Node ERBB2 {
+  logic = (ERBB2);
+  rate_up = @logic ? $u_ERBB2 : 0;
+  rate_down = @logic ? 0 : $d_ERBB2;
+}
+
+Node KRAS {
+  logic = (!SRC & SOS1) | (SRC);
+  rate_up = @logic ? $u_KRAS : 0;
+  rate_down = @logic ? 0 : $d_KRAS;
+}
+
+Node RAF1 {
+  logic = (!KRAS & !MAPK1 & !MAPK3 & !AKT1 & !SRC & !PAK1 & !SIGNOR_PF24 & !SIGNOR_PF1 & !PRKCA & HRAS & !PRKAA1) | (!KRAS & !MAPK1 & !MAPK3 & !AKT1 & !SRC & !PAK1 & !SIGNOR_PF24 & !SIGNOR_PF1 & PRKCA & !PRKAA1) | (!KRAS & !MAPK1 & !MAPK3 & !AKT1 & !SRC & PAK1 & !SIGNOR_PF24 & !SIGNOR_PF1 & !PRKAA1) | (!KRAS & !MAPK1 & !MAPK3 & !AKT1 & SRC & !SIGNOR_PF24 & !SIGNOR_PF1 & !PRKAA1) | (KRAS & !MAPK1 & !MAPK3 & !AKT1 & !SIGNOR_PF24 & !SIGNOR_PF1 & !PRKAA1);
+  rate_up = @logic ? $u_RAF1 : 0;
+  rate_down = @logic ? 0 : $d_RAF1;
+}
+
+Node MAPK1 {
+  logic = (!MAP2K1 & !SIGNOR_PF25 & MAP2K2 & !DUSP6 & !PTPN7) | (!MAP2K1 & SIGNOR_PF25 & !DUSP6 & !PTPN7) | (MAP2K1 & !DUSP6 & !PTPN7);
+  rate_up = @logic ? $u_MAPK1 : 0;
+  rate_down = @logic ? 0 : $d_MAPK1;
+}
+
+Node MAPK3 {
+  logic = (!MAP2K1 & !SIGNOR_PF25 & MAP2K2) | (!MAP2K1 & SIGNOR_PF25) | (MAP2K1);
+  rate_up = @logic ? $u_MAPK3 : 0;
+  rate_down = @logic ? 0 : $d_MAPK3;
+}
+
+Node PIK3R1 {
+  logic = (EGFR);
+  rate_up = @logic ? $u_PIK3R1 : 0;
+  rate_down = @logic ? 0 : $d_PIK3R1;
+}
+
+Node PTEN {
+  logic = (!SRC & LCK & !CSNK2A1) | (SRC & !CSNK2A1);
+  rate_up = @logic ? $u_PTEN : 0;
+  rate_down = @logic ? 0 : $d_PTEN;
+}
+
+Node AKT1 {
+  logic = (!PTEN & !SRC & !SIGNOR_C156 & !CHEBI_16618 & !CSNK2A1 & MTOR & !PHLPP1) | (!PTEN & !SRC & !SIGNOR_C156 & !CHEBI_16618 & CSNK2A1 & !PHLPP1) | (!PTEN & !SRC & !SIGNOR_C156 & CHEBI_16618 & !PHLPP1) | (!PTEN & !SRC & SIGNOR_C156 & !PHLPP1) | (!PTEN & SRC & !PHLPP1);
+  rate_up = @logic ? $u_AKT1 : 0;
+  rate_down = @logic ? 0 : $d_AKT1;
+}
+
+Node CCND1 {
+  logic = (!GSK3B & !STAT3 & !CTNNB1 & !GLI1 & !SIGNOR_C13 & GLI3) | (!GSK3B & !STAT3 & !CTNNB1 & !GLI1 & SIGNOR_C13) | (!GSK3B & !STAT3 & !CTNNB1 & GLI1) | (!GSK3B & !STAT3 & CTNNB1) | (!GSK3B & STAT3);
+  rate_up = @logic ? $u_CCND1 : 0;
+  rate_down = @logic ? 0 : $d_CCND1;
+}
+
+Node CCNE1 {
+  logic = (E2F1 & !GSK3B);
+  rate_up = @logic ? $u_CCNE1 : 0;
+  rate_down = @logic ? 0 : $d_CCNE1;
+}
+
+Node RB1 {
+  logic = (!CDK4 & !SIGNOR_C18);
+  rate_up = @logic ? $u_RB1 : 0;
+  rate_down = @logic ? 0 : $d_RB1;
+}
+
+Node E2F1 {
+  logic = (MAPK3);
+  rate_up = @logic ? $u_E2F1 : 0;
+  rate_down = @logic ? 0 : $d_E2F1;
+}
+
+Node MYC {
+  logic = (!GSK3B & PIM1 & !SMAD3);
+  rate_up = @logic ? $u_MYC : 0;
+  rate_down = @logic ? 0 : $d_MYC;
+}
+
+Node PIK3CG {
+  logic = (!KRAS & HRAS) | (KRAS);
+  rate_up = @logic ? $u_PIK3CG : 0;
+  rate_down = @logic ? 0 : $d_PIK3CG;
+}
+
+Node SRC {
+  logic = (!PIK3CG & !GSK3B & PTPN1) | (!PIK3CG & GSK3B) | (PIK3CG);
+  rate_up = @logic ? $u_SRC : 0;
+  rate_down = @logic ? 0 : $d_SRC;
+}
+
+Node GRB2 {
+  logic = (EGFR);
+  rate_up = @logic ? $u_GRB2 : 0;
+  rate_down = @logic ? 0 : $d_GRB2;
+}
+
+Node SOS1 {
+  logic = (!MAPK1 & !MAPK3 & GRB2 & !SIGNOR_PF1);
+  rate_up = @logic ? $u_SOS1 : 0;
+  rate_down = @logic ? 0 : $d_SOS1;
+}
+
+Node NCK1 {
+  logic = (EGFR);
+  rate_up = @logic ? $u_NCK1 : 0;
+  rate_down = @logic ? 0 : $d_NCK1;
+}
+
+Node PAK1 {
+  logic = (NCK1);
+  rate_up = @logic ? $u_PAK1 : 0;
+  rate_down = @logic ? 0 : $d_PAK1;
+}
+
+Node SIGNOR_C156 {
+  logic = (SIGNOR_C156);
+  rate_up = @logic ? $u_SIGNOR_C156 : 0;
+  rate_down = @logic ? 0 : $d_SIGNOR_C156;
+}
+
+Node SIGNOR_PF24 {
+  logic = (SIGNOR_PF24);
+  rate_up = @logic ? $u_SIGNOR_PF24 : 0;
+  rate_down = @logic ? 0 : $d_SIGNOR_PF24;
+}
+
+Node GSK3B {
+  logic = (!MAPK1 & !MAPK3 & !AKT1 & !SIGNOR_PF24 & !MAPK14);
+  rate_up = @logic ? $u_GSK3B : 0;
+  rate_down = @logic ? 0 : $d_GSK3B;
+}
+
+Node AURKA {
+  logic = (!GSK3B);
+  rate_up = @logic ? $u_AURKA : 0;
+  rate_down = @logic ? 0 : $d_AURKA;
+}
+
+Node CBL {
+  logic = (EGFR & !PRKCA);
+  rate_up = @logic ? $u_CBL : 0;
+  rate_down = @logic ? 0 : $d_CBL;
+}
+
+Node LCK {
+  logic = (!CBL);
+  rate_up = @logic ? $u_LCK : 0;
+  rate_down = @logic ? 0 : $d_LCK;
+}
+
+Node CLK2 {
+  logic = (!AKT1 & SIGNOR_PF24) | (AKT1);
+  rate_up = @logic ? $u_CLK2 : 0;
+  rate_down = @logic ? 0 : $d_CLK2;
+}
+
+Node PTPN1 {
+  logic = (CLK2);
+  rate_up = @logic ? $u_PTPN1 : 0;
+  rate_down = @logic ? 0 : $d_PTPN1;
+}
+
+Node CHEBI_16618 {
+  logic = (!PIK3CG & SIGNOR_C156) | (PIK3CG);
+  rate_up = @logic ? $u_CHEBI_16618 : 0;
+  rate_down = @logic ? 0 : $d_CHEBI_16618;
+}
+
+Node STAT3 {
+  logic = (!EGFR & !MAPK3 & !SRC & !PTPN1 & !MTOR & !RPS6KA5 & MAPK14) | (!EGFR & !MAPK3 & !SRC & !PTPN1 & !MTOR & RPS6KA5) | (!EGFR & !MAPK3 & !SRC & !PTPN1 & MTOR) | (!EGFR & !MAPK3 & SRC & !PTPN1) | (!EGFR & MAPK3 & !PTPN1) | (EGFR & !PTPN1);
+  rate_up = @logic ? $u_STAT3 : 0;
+  rate_down = @logic ? 0 : $d_STAT3;
+}
+
+Node CTNNB1 {
+  logic = (!EGFR & !SRC & !SIGNOR_PF24 & !GSK3B & !AURKA & CSNK2A1 & !PRKCA) | (!EGFR & !SRC & !SIGNOR_PF24 & !GSK3B & AURKA & !PRKCA) | (!EGFR & !SRC & SIGNOR_PF24 & !GSK3B & !PRKCA) | (!EGFR & SRC & !GSK3B & !PRKCA) | (EGFR & !GSK3B & !PRKCA);
+  rate_up = @logic ? $u_CTNNB1 : 0;
+  rate_down = @logic ? 0 : $d_CTNNB1;
+}
+
+Node STAT5A {
+  logic = (EGFR);
+  rate_up = @logic ? $u_STAT5A : 0;
+  rate_down = @logic ? 0 : $d_STAT5A;
+}
+
+Node PIM1 {
+  logic = (STAT5A);
+  rate_up = @logic ? $u_PIM1 : 0;
+  rate_down = @logic ? 0 : $d_PIM1;
+}
+
+Node MAP2K1 {
+  logic = (!RAF1 & !BRAF & MAP3K8) | (!RAF1 & BRAF) | (RAF1);
+  rate_up = @logic ? $u_MAP2K1 : 0;
+  rate_down = @logic ? 0 : $d_MAP2K1;
+}
+
+Node SIGNOR_PF25 {
+  logic = (SIGNOR_PF25);
+  rate_up = @logic ? $u_SIGNOR_PF25 : 0;
+  rate_down = @logic ? 0 : $d_SIGNOR_PF25;
+}
+
+Node MAP2K2 {
+  logic = (!RAF1 & !BRAF & MAP3K8) | (!RAF1 & BRAF) | (RAF1);
+  rate_up = @logic ? $u_MAP2K2 : 0;
+  rate_down = @logic ? 0 : $d_MAP2K2;
+}
+
+Node SIGNOR_PF1 {
+  logic = (SIGNOR_PF1);
+  rate_up = @logic ? $u_SIGNOR_PF1 : 0;
+  rate_down = @logic ? 0 : $d_SIGNOR_PF1;
+}
+
+Node CSNK2A1 {
+  logic = (!MAPK1 & SIGNOR_PF1) | (MAPK1);
+  rate_up = @logic ? $u_CSNK2A1 : 0;
+  rate_down = @logic ? 0 : $d_CSNK2A1;
+}
+
+Node ELK1 {
+  logic = (!MAPK1 & !MAPK3 & !SIGNOR_PF1 & MAPK14) | (!MAPK1 & !MAPK3 & SIGNOR_PF1) | (!MAPK1 & MAPK3) | (MAPK1);
+  rate_up = @logic ? $u_ELK1 : 0;
+  rate_down = @logic ? 0 : $d_ELK1;
+}
+
+Node PRKCA {
+  logic = (!ELK1 & STK3) | (ELK1);
+  rate_up = @logic ? $u_PRKCA : 0;
+  rate_down = @logic ? 0 : $d_PRKCA;
+}
+
+Node HRAS {
+  logic = (SOS1);
+  rate_up = @logic ? $u_HRAS : 0;
+  rate_down = @logic ? 0 : $d_HRAS;
+}
+
+Node DUSP6 {
+  logic = (!MAPK3);
+  rate_up = @logic ? $u_DUSP6 : 0;
+  rate_down = @logic ? 0 : $d_DUSP6;
+}
+
+Node PTPN7 {
+  logic = (MAPK3);
+  rate_up = @logic ? $u_PTPN7 : 0;
+  rate_down = @logic ? 0 : $d_PTPN7;
+}
+
+Node PRKAA1 {
+  logic = (!AKT1);
+  rate_up = @logic ? $u_PRKAA1 : 0;
+  rate_down = @logic ? 0 : $d_PRKAA1;
+}
+
+Node STK3 {
+  logic = (!AKT1 & !SIGNOR_PF24);
+  rate_up = @logic ? $u_STK3 : 0;
+  rate_down = @logic ? 0 : $d_STK3;
+}
+
+Node BRAF {
+  logic = (!MAPK1 & !MAPK3 & !AKT1 & !SIGNOR_PF24 & !SIGNOR_PF1 & HRAS);
+  rate_up = @logic ? $u_BRAF : 0;
+  rate_down = @logic ? 0 : $d_BRAF;
+}
+
+Node MAP3K8 {
+  logic = (!AKT1 & SIGNOR_PF24) | (AKT1);
+  rate_up = @logic ? $u_MAP3K8 : 0;
+  rate_down = @logic ? 0 : $d_MAP3K8;
+}
+
+Node IRS1 {
+  logic = (!MAPK1 & !MAPK3 & !MTOR);
+  rate_up = @logic ? $u_IRS1 : 0;
+  rate_down = @logic ? 0 : $d_IRS1;
+}
+
+Node SIGNOR_PF26 {
+  logic = (SIGNOR_PF26);
+  rate_up = @logic ? $u_SIGNOR_PF26 : 0;
+  rate_down = @logic ? 0 : $d_SIGNOR_PF26;
+}
+
+Node MTOR {
+  logic = (!SIGNOR_PF26);
+  rate_up = @logic ? $u_MTOR : 0;
+  rate_down = @logic ? 0 : $d_MTOR;
+}
+
+Node PHLPP1 {
+  logic = (!GSK3B);
+  rate_up = @logic ? $u_PHLPP1 : 0;
+  rate_down = @logic ? 0 : $d_PHLPP1;
+}
+
+Node RPS6KA5 {
+  logic = (!MAPK1 & !MAPK3 & !SIGNOR_PF1 & MAPK14) | (!MAPK1 & !MAPK3 & SIGNOR_PF1) | (!MAPK1 & MAPK3) | (MAPK1);
+  rate_up = @logic ? $u_RPS6KA5 : 0;
+  rate_down = @logic ? 0 : $d_RPS6KA5;
+}
+
+Node MAPK14 {
+  logic = (!MAPK1 & !PTPN7);
+  rate_up = @logic ? $u_MAPK14 : 0;
+  rate_down = @logic ? 0 : $d_MAPK14;
+}
+
+Node GLI1 {
+  logic = (MAPK1 & !PTEN & !PRKAA1 & !MAPK14);
+  rate_up = @logic ? $u_GLI1 : 0;
+  rate_down = @logic ? 0 : $d_GLI1;
+}
+
+Node SIGNOR_C13 {
+  logic = (SIGNOR_C13);
+  rate_up = @logic ? $u_SIGNOR_C13 : 0;
+  rate_down = @logic ? 0 : $d_SIGNOR_C13;
+}
+
+Node GLI3 {
+  logic = (!GSK3B);
+  rate_up = @logic ? $u_GLI3 : 0;
+  rate_down = @logic ? 0 : $d_GLI3;
+}
+
+Node SMAD3 {
+  logic = (!MAPK1 & !MAPK14 & PML & !CDK4) | (!MAPK1 & MAPK14 & !CDK4);
+  rate_up = @logic ? $u_SMAD3 : 0;
+  rate_down = @logic ? 0 : $d_SMAD3;
+}
+
+Node PML {
+  logic = (MAPK1 & !CSNK2A1);
+  rate_up = @logic ? $u_PML : 0;
+  rate_down = @logic ? 0 : $d_PML;
+}
+
+Node CDK4 {
+  logic = (CCND1 & !CDKN2A);
+  rate_up = @logic ? $u_CDK4 : 0;
+  rate_down = @logic ? 0 : $d_CDK4;
+}
+
+Node CDKN2A {
+  logic = (!MYC);
+  rate_up = @logic ? $u_CDKN2A : 0;
+  rate_down = @logic ? 0 : $d_CDKN2A;
+}
+
+Node SIGNOR_C18 {
+  logic = (SIGNOR_C18);
+  rate_up = @logic ? $u_SIGNOR_C18 : 0;
+  rate_down = @logic ? 0 : $d_SIGNOR_C18;
+}
+
